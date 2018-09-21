@@ -1,0 +1,33 @@
+<resources>
+    <!-- App Name -->
+    <string name="app_name">The Movie DB</string>
+
+    <!-- Activity Names -->
+    <string name="details_activity">Movie Details</string>
+
+    <!-- Error Messages -->
+    <string name="error_message">Failed to get results. Please try again.</string>
+    <string name="no_connection">No internet connection.</string>
+
+    <!-- Menu Items -->
+    <string name="most_popular_movies">Most Popular</string>
+    <string name="top_rated_movies">Highest Rated</string>
+
+    <!-- Sample Movie Strings -->
+    <string name="sample_title">Jurassic World: Fallen Kingdom</string>
+    <string name="sample_release_date">2018–06–06</string>
+    <string name="sample_vote_average">6.5</string>
+    <string name="sample_overview">Three years after the demise of Jurassic World, a volcanic eruption threatens the remaining dinosaurs on the isla Nublar, so Claire Dearing, the former park manager, recruits Owen Grady to help prevent the extinction of the dinosaurs once again.</string>
+    <string name="sample_backdrop_content_description">Backdrop image for movie.</string>
+    <string name="sample_poster_content_description">Poster for movie.</string>
+
+    <!-- Labels -->
+    <string name="overview_label">Overview</string>
+    <string name="tv_movie_details_release_date_label">Release Date:</string>
+    <string name="tv_movie_details_vote_average_label">Vote Average:</string>
+    <string name="movie_poster_content_description">Movie poster thumbnail.</string>
+
+    <!-- Format -->
+    <string name="voter_average_formatter">%.1f</string>
+
+</resources>
