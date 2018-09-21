@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity
     private MovieAdapter mAdapter;
     private TextView mErrorMessageTextView;
     private ProgressBar mLoadingIndicatorProgressBar;
+    private GridLayoutManager layoutManager;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity
 
         // Setting the layout manager for the RecyclerView.
         int NUM_COLS = 3;
-        GridLayoutManager layoutManager = new GridLayoutManager(this, NUM_COLS);
+        layoutManager = new GridLayoutManager(this, NUM_COLS);
         mMoviesRecyclerView.setLayoutManager(layoutManager);
 
         mMoviesRecyclerView.setHasFixedSize(true);
@@ -129,6 +130,7 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(ArrayList<Movie> movieList) {
             mLoadingIndicatorProgressBar.setVisibility(View.INVISIBLE);
+            layoutManager.smoothScrollToPosition(mMoviesRecyclerView, null, 0);
 
             if (movieList != null) {
                 mErrorMessageTextView.setVisibility(View.INVISIBLE);
@@ -155,8 +157,10 @@ public class MainActivity extends AppCompatActivity
                 return true;
             case R.id.most_popular_movies:
                 makeSearchQuery(MOST_POPULAR_MOVIES_URL);
+                return true;
             case R.id.top_rated_movies:
                 makeSearchQuery(TOP_RATED_MOVIES_URL);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
