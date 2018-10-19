@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity
         implements MovieAdapter.MovieAdapterOnClickHandler {
 
     private static final String MOST_POPULAR_MOVIES_URL =
-            "https://api.themoviedb.org/3/movie/popular?api_key=YOUR-API-KEY&language=en-US&page=1";
+            "https://api.themoviedb.org/3/movie/popular?api_key=f4cb8db2e9e6357902ce99c4cd2a5050&language=en-US&page=1";
     private static final String TOP_RATED_MOVIES_URL =
-            "https://api.themoviedb.org/3/movie/top_rated?api_key=YOUR-API-KEY&language=en-US&page=1";
+            "https://api.themoviedb.org/3/movie/top_rated?api_key=f4cb8db2e9e6357902ce99c4cd2a5050&language=en-US&page=1";
     private RecyclerView mMoviesRecyclerView;
     private MovieAdapter mAdapter;
     private TextView mErrorMessageTextView;
