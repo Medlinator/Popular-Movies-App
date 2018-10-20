@@ -20,14 +20,18 @@
     <string name="sample_overview">Three years after the demise of Jurassic World, a volcanic eruption threatens the remaining dinosaurs on the isla Nublar, so Claire Dearing, the former park manager, recruits Owen Grady to help prevent the extinction of the dinosaurs once again.</string>
     <string name="sample_backdrop_content_description">Backdrop image for movie.</string>
     <string name="sample_poster_content_description">Poster for movie.</string>
+    <string name="sample_review">I felt embarrassed to be watching this. It\'s an embarrassing fever dream. I abandoned it halfway through its runtime.</string>
 
     <!-- Labels -->
     <string name="overview_label">Overview</string>
     <string name="tv_movie_details_release_date_label">Release Date:</string>
     <string name="tv_movie_details_vote_average_label">Vote Average:</string>
     <string name="movie_poster_content_description">Movie poster thumbnail.</string>
+    <string name="tv_movie_details_reviews_label">Reviews</string>
 
     <!-- Format -->
     <string name="voter_average_formatter">%.1f</string>
+    <string name="sample_review_author">Law</string>
+    <string name="tv_movie_details_trailers_label">Trailers</string>
 
 </resources>

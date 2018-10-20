@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<merge
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_movies"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"/>
+        android:layout_margin="8dp" />
 
     <!-- Empty view is only visible when the list has no items. -->
     <TextView
@@ -29,4 +29,4 @@
         android:layout_height="match_parent"
         android:scaleX="0.10"
         android:scaleY="0.10" />
-</merge>
+</LinearLayout>
