@@ -10,12 +10,14 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,7 +44,9 @@ public class MainActivity extends AppCompatActivity
             "https://api.themoviedb.org/3/movie/popular?api_key=[YOUR_API_KEY]&language=en-US&page=1";
     private static final String TOP_RATED_MOVIES_URL =
             "https://api.themoviedb.org/3/movie/top_rated?api_key=[YOUR_API_KEY]&language=en-US&page=1";
+    private static final String BUNDLE_RECYCLER_LAYOUT = "classname.recycler.layout";
 
+    private Boolean lastPageFavorites;
     private FavoritesViewModel mFavoritesViewModel;
     private ArrayList<Movie> mFavoriteMovies;
     private RecyclerView mMoviesRecyclerView;
@@ -57,6 +61,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Log.e("-----------------------", "onCreate() called.");
+
+        lastPageFavorites = false;
         mMoviesRecyclerView = findViewById(R.id.rv_movies);
         mErrorMessageTextView = findViewById(R.id.tv_error_message);
         mLoadingIndicatorProgressBar = findViewById(R.id.pb_loading_indicator);
@@ -65,6 +72,9 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onChanged(@Nullable List<Movie> movies) {
                 mFavoriteMovies = (ArrayList<Movie>) movies;
+                if (lastPageFavorites == true) {
+                    mAdapter.setMovieData(mFavoriteMovies);
+                }
             }
         });
 
@@ -78,6 +88,11 @@ public class MainActivity extends AppCompatActivity
         // Setting the adapter for the RecyclerView.
         mAdapter = new MovieAdapter(this);
         mMoviesRecyclerView.setAdapter(mAdapter);
+
+        if (savedInstanceState != null) {
+            Parcelable savedRecyclerLayoutState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT);
+            mMoviesRecyclerView.getLayoutManager().onRestoreInstanceState(savedRecyclerLayoutState);
+        }
 
         // Get a reference to the ConnectivityManager to check state of network connectivity.
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -94,6 +109,12 @@ public class MainActivity extends AppCompatActivity
             mErrorMessageTextView.setText(R.string.no_connection);
             mErrorMessageTextView.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(BUNDLE_RECYCLER_LAYOUT, mMoviesRecyclerView.getLayoutManager().onSaveInstanceState());
     }
 
     /**
@@ -176,12 +197,15 @@ public class MainActivity extends AppCompatActivity
                 return true;
             case R.id.most_popular_movies:
                 makeSearchQuery(MOST_POPULAR_MOVIES_URL);
+                lastPageFavorites = false;
                 return true;
             case R.id.top_rated_movies:
                 makeSearchQuery(TOP_RATED_MOVIES_URL);
+                lastPageFavorites = false;
                 return true;
             case R.id.favorite_movies:
                 mAdapter.setMovieData(mFavoriteMovies);
+                lastPageFavorites = true;
                 return true;
         }
         return super.onOptionsItemSelected(item);
