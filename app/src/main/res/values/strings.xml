@@ -12,6 +12,8 @@
     <!-- Menu Items -->
     <string name="most_popular_movies">Most Popular</string>
     <string name="top_rated_movies">Highest Rated</string>
+    <string name="favorites_movies">Favorites</string>
+
 
     <!-- Sample Movie Strings -->
     <string name="sample_title">Jurassic World: Fallen Kingdom</string>
@@ -21,6 +23,8 @@
     <string name="sample_backdrop_content_description">Backdrop image for movie.</string>
     <string name="sample_poster_content_description">Poster for movie.</string>
     <string name="sample_review">I felt embarrassed to be watching this. It\'s an embarrassing fever dream. I abandoned it halfway through its runtime.</string>
+    <string name="sample_review_author_hyphen">-</string>
+    <string name="sample_trailer">Jurassic World: Fallen Kingdom - Official Trailer [HD]</string>
 
     <!-- Labels -->
     <string name="overview_label">Overview</string>
@@ -33,5 +37,4 @@
     <string name="voter_average_formatter">%.1f</string>
     <string name="sample_review_author">Law</string>
     <string name="tv_movie_details_trailers_label">Trailers</string>
-
 </resources>
